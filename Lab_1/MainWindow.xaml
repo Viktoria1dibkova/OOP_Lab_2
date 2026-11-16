@@ -87,17 +87,17 @@
                                     <DataGridTextColumn Header="Наименование" Width="200" Binding="{Binding Name}"/>
                                 </DataGrid.Columns>
                                 <DataGrid.ItemsSource>
-                                    <x:Array Type="{x:Type local:Colors}">
-                                        <local:Colors ColorHex="#FFF0E6E6" RGB="240, 230, 230" Name="Очень светлый бордовый" />
-                                        <local:Colors ColorHex="#FFE1CCCC" RGB="225, 204, 204" Name="Светлый бордовый" />
-                                        <local:Colors ColorHex="#FFC29999" RGB="194, 153, 153" Name="Светло-бордовый" />
-                                        <local:Colors ColorHex="#FFA36666" RGB="163, 102, 102" Name="Бордовый светлый" />
-                                        <local:Colors ColorHex="#FF803333" RGB="128, 51, 51" Name="Бордовый" />
-                                        <local:Colors ColorHex="#FF800000" RGB="128, 0, 0" Name="Основной бордовый" />
-                                        <local:Colors ColorHex="#FF660000" RGB="102, 0, 0" Name="Тёмно-бордовый" />
-                                        <local:Colors ColorHex="#FF4D0000" RGB="77, 0, 0" Name="Очень тёмный бордовый" />
-                                        <local:Colors ColorHex="#FF330000" RGB="51, 0, 0" Name="Почти чёрный бордовый" />
-                                        <local:Colors ColorHex="#FF1A0000" RGB="26, 0, 0" Name="Чёрный бордовый" />
+                                    <x:Array Type="{x:Type local:ColorItem}">
+                                        <local:ColorItem ColorHex="#FFF0E6E6" RGB="240, 230, 230" Name="Очень светлый бордовый" />
+                                        <local:ColorItem ColorHex="#FFE1CCCC" RGB="225, 204, 204" Name="Светлый бордовый" />
+                                        <local:ColorItem ColorHex="#FFC29999" RGB="194, 153, 153" Name="Светло-бордовый" />
+                                        <local:ColorItem ColorHex="#FFA36666" RGB="163, 102, 102" Name="Бордовый светлый" />
+                                        <local:ColorItem ColorHex="#FF803333" RGB="128, 51, 51" Name="Бордовый" />
+                                        <local:ColorItem ColorHex="#FF800000" RGB="128, 0, 0" Name="Основной бордовый" />
+                                        <local:ColorItem ColorHex="#FF660000" RGB="102, 0, 0" Name="Тёмно-бордовый" />
+                                        <local:ColorItem ColorHex="#FF4D0000" RGB="77, 0, 0" Name="Очень тёмный бордовый" />
+                                        <local:ColorItem ColorHex="#FF330000" RGB="51, 0, 0" Name="Почти чёрный бордовый" />
+                                        <local:ColorItem ColorHex="#FF1A0000" RGB="26, 0, 0" Name="Чёрный бордовый" />
                                     </x:Array>
                                 </DataGrid.ItemsSource>
                             </DataGrid>
@@ -110,17 +110,17 @@
                                     <DataGridTextColumn Header="Наименование" Width="200" Binding="{Binding Name}"/>
                                 </DataGrid.Columns>
                                 <DataGrid.ItemsSource>
-                                    <x:Array Type="{x:Type local:Colors}">
-                                        <local:Colors ColorHex="#E6F2FF" RGB="230, 242, 255" Name="Очень светлый синий" />
-                                        <local:Colors ColorHex="#CCE5FF" RGB="204, 229, 255" Name="Светлый синий" />
-                                        <local:Colors ColorHex="#99CCFF" RGB="153, 204, 255" Name="Светло-синий" />
-                                        <local:Colors ColorHex="#66B2FF" RGB="102, 178, 255" Name="Голубой" />
-                                        <local:Colors ColorHex="#3399FF" RGB="51, 153, 255" Name="Синий" />
-                                        <local:Colors ColorHex="#0078D4" RGB="0, 120, 212" Name="Основной синий" />
-                                        <local:Colors ColorHex="#0063B1" RGB="0, 99, 177" Name="Темно-синий" />
-                                        <local:Colors ColorHex="#004C8C" RGB="0, 76, 140" Name="Очень темный синий" />
-                                        <local:Colors ColorHex="#003666" RGB="0, 54, 102" Name="Почти черный синий" />
-                                        <local:Colors ColorHex="#001F40" RGB="0, 31, 64" Name="Черный синий" />
+                                    <x:Array Type="{x:Type local:ColorItem}">
+                                        <local:ColorItem ColorHex="#E6F2FF" RGB="230, 242, 255" Name="Очень светлый синий" />
+                                        <local:ColorItem ColorHex="#CCE5FF" RGB="204, 229, 255" Name="Светлый синий" />
+                                        <local:ColorItem ColorHex="#99CCFF" RGB="153, 204, 255" Name="Светло-синий" />
+                                        <local:ColorItem ColorHex="#66B2FF" RGB="102, 178, 255" Name="Голубой" />
+                                        <local:ColorItem ColorHex="#3399FF" RGB="51, 153, 255" Name="Синий" />
+                                        <local:ColorItem ColorHex="#0078D4" RGB="0, 120, 212" Name="Основной синий" />
+                                        <local:ColorItem ColorHex="#0063B1" RGB="0, 99, 177" Name="Темно-синий" />
+                                        <local:ColorItem ColorHex="#004C8C" RGB="0, 76, 140" Name="Очень темный синий" />
+                                        <local:ColorItem ColorHex="#003666" RGB="0, 54, 102" Name="Почти черный синий" />
+                                        <local:ColorItem ColorHex="#001F40" RGB="0, 31, 64" Name="Черный синий" />
                                     </x:Array>
                                 </DataGrid.ItemsSource>
                             </DataGrid>

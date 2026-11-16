@@ -1,6 +1,6 @@
 ﻿namespace Library
 {
-    public class Colors
+    public class ColorItem
     {
         public string ColorHex { get; set; }
         public string RGB { get; set; }

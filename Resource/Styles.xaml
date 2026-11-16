@@ -47,7 +47,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-=
+
     <Style x:Key="StandardTextBoxStyle" TargetType="TextBox">
         <Setter Property="Padding" Value="5"/>
         <Setter Property="Margin" Value="0,5"/>
