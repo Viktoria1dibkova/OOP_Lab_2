@@ -3,158 +3,139 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Library;assembly=Library"
         mc:Ignorable="d"
-        Title="Interface" Height="450" Width="800" >
-    <TabControl Margin="10" FontSize="16">
-        <TabItem Header="Основное">
-            <StackPanel Margin="10">
-                <GroupBox Header="Настройки персонализации" Margin="0,10">
-                    <StackPanel Margin="5">
-                        <ComboBox Margin="0,5" SelectedIndex="0">
-                            <ComboBoxItem Content="Светлая тема"/>
-                            <ComboBoxItem Content="Темная тема"/>
-                        </ComboBox>
-                        <ComboBox Margin="0,5" SelectedIndex="0">
-                            <ComboBoxItem Content="Русский"/>
-                            <ComboBoxItem Content="English"/>
-                            <ComboBoxItem Content="한국어"/>
-                        </ComboBox>
-                    </StackPanel>
-                </GroupBox>
-
-                <GroupBox Header="Настройки шрифтов" Margin="0,10">
-                    <StackPanel Margin="5">
-                        <ComboBox Margin="0,5" SelectedIndex="0">
-                            <ComboBoxItem Content="Arial"/>
-                            <ComboBoxItem Content="Times New Roman"/>
-                            <ComboBoxItem Content="Segoe UI"/>
-                        </ComboBox>
-                        <StackPanel Orientation="Horizontal" Margin="0,5">
-                            <TextBlock Text="Размер шрифта: " VerticalAlignment="Center"/>
-                            <Slider Width="200" Minimum="8" Maximum="32" Value="14" 
-                            TickFrequency="1" IsSnapToTickEnabled="True"/>
-                        </StackPanel>
-                    </StackPanel>
-                </GroupBox>
-            </StackPanel>
-        </TabItem>
-        
-        <TabItem Header="Цветовая палитра">
+        Title="Interface" Height="450" Width="800" Background="{Binding WindowBackground}" Foreground="{Binding WindowForeground}" FontFamily="{Binding CurrentFontFamily}">
+    <TabControl Margin="10" FontSize="{Binding FontSize}" Background="{Binding WindowBackground}" Foreground="{Binding WindowForeground}">
+        <TabItem Header="{Binding TabMain}">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <StackPanel Margin="10" >
-                    <GroupBox Header="Текущая тема" Margin="0,0,0,10" FontSize="12">
-                        <TextBlock Text="Светлая тема" FontSize="14" FontWeight="Bold" Margin="10"/>
-                    </GroupBox>
+                <StackPanel Margin="10">
+                    <GroupBox Header="{Binding GroupPersonalization}" Style="{StaticResource StandardGroupBoxStyle}">
+                        <StackPanel Margin="5">
+                            <TextBlock Text="{Binding TextTheme}" Margin="0,5,0,0"/>
+                            <ComboBox Margin="0,5" SelectedValue="{Binding SelectedTheme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Content">
+                                <ComboBoxItem Content="Светлая тема"/>
+                                <ComboBoxItem Content="Темная тема"/>
+                            </ComboBox>
 
-                    <GroupBox Header="Основные цвета" Margin="0,0,0,10" FontSize="12">
-                        <StackPanel Margin="10">
-                            <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <Rectangle Width="30" Height="30" Fill="#741515" Margin="0,0,10,0"/>
-                                <TextBlock Text="Основной цвет" VerticalAlignment="Center"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <Rectangle Width="30" Height="30" Fill="#29228c" Margin="0,0,10,0"/>
-                                <TextBlock Text="Акцентный цвет" VerticalAlignment="Center"/>
-                            </StackPanel>
+                            <TextBlock Text="Язык / Language / 언어:" Margin="0,10,0,0"/>
+                            <ComboBox Margin="0,5" SelectedValue="{Binding SelectedLanguage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  SelectedValuePath="Content">
+                                <ComboBoxItem Content="Русский"/>
+                                <ComboBoxItem Content="English"/>
+                                <ComboBoxItem Content="한국어"/>
+                            </ComboBox>
                         </StackPanel>
                     </GroupBox>
+                    <GroupBox Header="{Binding GroupFonts}" Style="{StaticResource StandardGroupBoxStyle}">
+                        <StackPanel Margin="5">
+                            <TextBlock Text="{Binding FontType_}" Margin="0,5,0,0"/>
+                            <ComboBox Margin="0,5" SelectedValue="{Binding SelectedFont, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Content">
+                                <ComboBoxItem Content="Arial"/>
+                                <ComboBoxItem Content="Times New Roman"/>
+                                <ComboBoxItem Content="Segoe UI"/>
+                            </ComboBox>
 
-                    <GroupBox Header="Индикаторные цвета" Margin="0,0,0,10" FontSize="12">
-                        <StackPanel Margin="10">
-                            <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <Rectangle Width="30" Height="30" Fill="#107C10" Margin="0,0,10,0"/>
-                                <TextBlock Text="Успех" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <TextBlock Text="{Binding TextFontSize}" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding FontSize}" VerticalAlignment="Center" Margin="5,0" FontWeight="Bold" Foreground="{StaticResource PrimaryColorBrush}"/>
+                                <Slider Width="200" Minimum="8" Maximum="32" Value="{Binding FontSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <Rectangle Width="30" Height="30" Fill="#D13438" Margin="0,0,10,0"/>
-                                <TextBlock Text="Ошибка" VerticalAlignment="Center"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <Rectangle Width="30" Height="30" Fill="#0078D4" Margin="0,0,10,0"/>
-                                <TextBlock Text="Информация" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </GroupBox>
-
-                    <GroupBox Header="Таблица оттенков" Margin="0,0,0,10" >
-                        <StackPanel Margin="10">
-                            <TextBlock Text="Основной цвет (бордовый)" FontWeight="Bold" Margin="0,10,0,5"/>
-                            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Margin="0,0,0,15">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Цвет" Width="100" Binding="{Binding ColorHex}"/>
-                                    <DataGridTextColumn Header="RGB код" Width="150" Binding="{Binding RGB}"/>
-                                    <DataGridTextColumn Header="Наименование" Width="200" Binding="{Binding Name}"/>
-                                </DataGrid.Columns>
-                                <DataGrid.ItemsSource>
-                                    <x:Array Type="{x:Type local:ColorItem}">
-                                        <local:ColorItem ColorHex="#FFF0E6E6" RGB="240, 230, 230" Name="Очень светлый бордовый" />
-                                        <local:ColorItem ColorHex="#FFE1CCCC" RGB="225, 204, 204" Name="Светлый бордовый" />
-                                        <local:ColorItem ColorHex="#FFC29999" RGB="194, 153, 153" Name="Светло-бордовый" />
-                                        <local:ColorItem ColorHex="#FFA36666" RGB="163, 102, 102" Name="Бордовый светлый" />
-                                        <local:ColorItem ColorHex="#FF803333" RGB="128, 51, 51" Name="Бордовый" />
-                                        <local:ColorItem ColorHex="#FF800000" RGB="128, 0, 0" Name="Основной бордовый" />
-                                        <local:ColorItem ColorHex="#FF660000" RGB="102, 0, 0" Name="Тёмно-бордовый" />
-                                        <local:ColorItem ColorHex="#FF4D0000" RGB="77, 0, 0" Name="Очень тёмный бордовый" />
-                                        <local:ColorItem ColorHex="#FF330000" RGB="51, 0, 0" Name="Почти чёрный бордовый" />
-                                        <local:ColorItem ColorHex="#FF1A0000" RGB="26, 0, 0" Name="Чёрный бордовый" />
-                                    </x:Array>
-                                </DataGrid.ItemsSource>
-                            </DataGrid>
-
-                            <TextBlock Text="Акцентный цвет (синий)" FontWeight="Bold" Margin="0,0,0,5"/>
-                            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,0,0,15">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Цвет" Width="100" Binding="{Binding ColorHex}"/>
-                                    <DataGridTextColumn Header="RGB код" Width="150" Binding="{Binding RGB}"/>
-                                    <DataGridTextColumn Header="Наименование" Width="200" Binding="{Binding Name}"/>
-                                </DataGrid.Columns>
-                                <DataGrid.ItemsSource>
-                                    <x:Array Type="{x:Type local:ColorItem}">
-                                        <local:ColorItem ColorHex="#E6F2FF" RGB="230, 242, 255" Name="Очень светлый синий" />
-                                        <local:ColorItem ColorHex="#CCE5FF" RGB="204, 229, 255" Name="Светлый синий" />
-                                        <local:ColorItem ColorHex="#99CCFF" RGB="153, 204, 255" Name="Светло-синий" />
-                                        <local:ColorItem ColorHex="#66B2FF" RGB="102, 178, 255" Name="Голубой" />
-                                        <local:ColorItem ColorHex="#3399FF" RGB="51, 153, 255" Name="Синий" />
-                                        <local:ColorItem ColorHex="#0078D4" RGB="0, 120, 212" Name="Основной синий" />
-                                        <local:ColorItem ColorHex="#0063B1" RGB="0, 99, 177" Name="Темно-синий" />
-                                        <local:ColorItem ColorHex="#004C8C" RGB="0, 76, 140" Name="Очень темный синий" />
-                                        <local:ColorItem ColorHex="#003666" RGB="0, 54, 102" Name="Почти черный синий" />
-                                        <local:ColorItem ColorHex="#001F40" RGB="0, 31, 64" Name="Черный синий" />
-                                    </x:Array>
-                                </DataGrid.ItemsSource>
-                            </DataGrid>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
 
-        <TabItem Header="Элементы управления">
+        <TabItem Header="{Binding TabPalette}">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Margin="10" >
-                    <Expander Header="Кнопки" IsExpanded="True" Margin="0,0,0,10">
+
+                    <GroupBox Header="Текущая тема" FontSize="12"
+                              Style="{StaticResource StandardGroupBoxStyle}">
+                        <TextBlock Text="{Binding SelectedTheme}" FontSize="14"
+                                   FontWeight="Bold" Margin="10"/>
+                    </GroupBox>
+
+                    <GroupBox Header="Системные цвета" FontSize="12"
+                              Style="{StaticResource StandardGroupBoxStyle}">
                         <StackPanel Margin="10">
-                            <Button Content="Обычная кнопка" Margin="0,5" Width="200" HorizontalAlignment="Left"/>
-                            <Button Margin="0,5" Width="200" HorizontalAlignment="Left">
-                                <Button.Content>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="★" FontSize="16" Margin="0,0,5,0"/>
-                                        <TextBlock Text="С иконкой"/>
-                                    </StackPanel>
-                                </Button.Content>
-                            </Button>
-                            <ToggleButton Content="Переключатель" Margin="0,5" Width="200" HorizontalAlignment="Left"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Rectangle Width="30" Height="30" Margin="0,0,10,0" Fill="{StaticResource PrimaryColorBrush}"/>
+                                <TextBlock Text="PrimaryColorBrush - основной" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Rectangle Width="30" Height="30" Margin="0,0,10,0" Fill="{StaticResource AccentColorBrush}"/>
+                                <TextBlock Text="AccentColorBrush - акцентный" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Rectangle Width="30" Height="30" Margin="0,0,10,0" Fill="{StaticResource SuccessColorBrush}"/>
+                                <TextBlock Text="SuccessColorBrush - успех" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Rectangle Width="30" Height="30" Margin="0,0,10,0" Fill="{StaticResource DangerColorBrush}"/>
+                                <TextBlock Text="DangerColorBrush - ошибка" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Rectangle Width="30" Height="30" Margin="0,0,10,0" Fill="{StaticResource InfoColorBrush}"/>
+                                <TextBlock Text="InfoColorBrush - информация" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Таблица оттенков (ObservableCollection из Library)"
+                              Style="{StaticResource StandardGroupBoxStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="Основной цвет (бордовый)" FontWeight="Bold" Margin="0,10,0,5"/>
+                            <DataGrid Style="{StaticResource StandardDataGridStyle}" Height="220"
+                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                                      ItemsSource="{Binding BurgundyColors}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Цвет" Width="100" Binding="{Binding ColorHex}"/>
+                                    <DataGridTextColumn Header="RGB код" Width="150" Binding="{Binding RGB}"/>
+                                    <DataGridTextColumn Header="Наименование" Width="*" Binding="{Binding Name}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <TextBlock Text="Акцентный цвет (синий)" FontWeight="Bold" Margin="0,10,0,5"/>
+                            <DataGrid Style="{StaticResource StandardDataGridStyle}" Height="220"
+                                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                                      ItemsSource="{Binding BlueColors}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Цвет" Width="100" Binding="{Binding ColorHex}"/>
+                                    <DataGridTextColumn Header="RGB код" Width="150" Binding="{Binding RGB}"/>
+                                    <DataGridTextColumn Header="Наименование" Width="*" Binding="{Binding Name}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+        <TabItem Header="{Binding TabControls}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="10">
+
+                    <Expander Header="Кнопки (стили из Resource)" IsExpanded="True" Margin="0,0,0,10">
+                        <StackPanel Margin="10" Orientation="Horizontal">
+                            <Button Content="Primary"  Width="120" Style="{StaticResource PrimaryButtonStyle}"/>
+                            <Button Content="Success"  Width="120" Style="{StaticResource SuccessButtonStyle}"/>
+                            <Button Content="Danger"   Width="120" Style="{StaticResource DangerButtonStyle}"/>
+                            <Button Content="Disabled" Width="120" IsEnabled="False"
+                                    Style="{StaticResource PrimaryButtonStyle}"/>
                         </StackPanel>
                     </Expander>
 
                     <Expander Header="Текстовые поля" IsExpanded="True" Margin="0,0,0,10">
-                        <StackPanel Margin="10">
-                            <TextBox Text="TextBox - обычное текстовое поле" Margin="0,5" Width="300" HorizontalAlignment="Left"/>
-                            <PasswordBox Password="12345" Margin="0,5" Width="300" HorizontalAlignment="Left"/>
-                            <RichTextBox Width="300" Height="60" HorizontalAlignment="Left" Margin="0,5">
+                        <StackPanel Margin="10" Width="350" HorizontalAlignment="Left">
+                            <TextBox Text="TextBox со стилем из библиотеки"
+                                     Style="{StaticResource StandardTextBoxStyle}"/>
+                            <TextBox Text="Кликни: триггер IsFocused подсветит границу"
+                                     Style="{StaticResource StandardTextBoxStyle}"/>
+                            <PasswordBox Password="12345" Margin="0,5" Padding="5"/>
+                            <RichTextBox Height="60" Margin="0,5">
                                 <FlowDocument>
-                                    <Paragraph>RichTextBox - форматированный текст</Paragraph>
+                                    <Paragraph>RichTextBox — форматированный текст</Paragraph>
                                 </FlowDocument>
                             </RichTextBox>
                         </StackPanel>
@@ -162,55 +143,56 @@
 
                     <Expander Header="Текстовые элементы" IsExpanded="True" Margin="0,0,0,10">
                         <StackPanel Margin="10">
-                            <Label Content="Заголовок 1" FontSize="24" FontWeight="Bold" Margin="0,5"/>
-                            <Label Content="Заголовок 2" FontSize="20" FontWeight="Bold" Margin="0,5"/>
-                            <Label Content="Заголовок 3" FontSize="16" FontWeight="Bold" Margin="0,5"/>
+                            <Label Content="Заголовок 1" FontSize="24" FontWeight="Bold"/>
+                            <Label Content="Заголовок 2" FontSize="20" FontWeight="Bold"/>
+                            <Label Content="Заголовок 3" FontSize="16" FontWeight="Bold"/>
                             <TextBlock Text="Обычный текст" Margin="0,5"/>
-                            <TextBlock Text="Подпись (мелкий текст)" FontSize="10" Foreground="Gray" Margin="0,5"/>
+                            <TextBlock Text="Подпись (мелкий текст)" FontSize="10"
+                                       Foreground="{StaticResource DisabledColorBrush}" Margin="0,5"/>
                         </StackPanel>
                     </Expander>
 
-                    <Expander Header="Списки и таблицы" IsExpanded="True" Margin="0,0,0,10">
+                    <Expander Header="Списки и таблицы" IsExpanded="False" Margin="0,0,0,10">
                         <StackPanel Margin="10">
-                            <ListBox Width="200" Height="100" HorizontalAlignment="Left" Margin="0,5">
+                            <ListBox Width="220" Height="90" HorizontalAlignment="Left" Margin="0,5">
                                 <ListBoxItem Content="Элемент 1"/>
                                 <ListBoxItem Content="Элемент 2"/>
                                 <ListBoxItem Content="Элемент 3"/>
                             </ListBox>
-                            <TreeView Width="200" Height="100" HorizontalAlignment="Left" Margin="0,5">
+                            <TreeView Width="220" Height="90" HorizontalAlignment="Left" Margin="0,5">
                                 <TreeViewItem Header="Корень">
                                     <TreeViewItem Header="Дочерний 1"/>
                                     <TreeViewItem Header="Дочерний 2"/>
                                 </TreeViewItem>
                             </TreeView>
-                            <DataGrid Width="300" Height="100" HorizontalAlignment="Left" Margin="0,5" AutoGenerateColumns="False">
+                            <DataGrid Width="320" Height="100" HorizontalAlignment="Left" Margin="0,5"
+                                      Style="{StaticResource StandardDataGridStyle}"
+                                      AutoGenerateColumns="False" CanUserAddRows="False">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Имя" Width="150"/>
-                                    <DataGridTextColumn Header="Значение" Width="150"/>
+                                    <DataGridTextColumn Header="Имя" Width="*"/>
+                                    <DataGridTextColumn Header="Значение" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
                     </Expander>
 
-                    <Expander Header="Прогресс-бар" IsExpanded="True" Margin="0,0,0,10">
+                    <Expander Header="Прогресс-бар и подсказки" IsExpanded="False" Margin="0,0,0,10">
                         <StackPanel Margin="10">
-                            <ProgressBar  Height="20" Width="300" HorizontalAlignment="Left" Margin="0,5" IsIndeterminate="True"/>
+                            <ProgressBar Height="20" Width="300" HorizontalAlignment="Left"
+                                         Margin="0,5" IsIndeterminate="True"/>
+                            <Button Content="Наведи на меня" Width="200" HorizontalAlignment="Left"
+                                    Margin="0,5" Style="{StaticResource PrimaryButtonStyle}"
+                                    ToolTip="Это всплывающая подсказка!"/>
+                            <TextBlock Text="Текст с подсказкой" Margin="0,5"
+                                       ToolTip="Подсказка для текста"/>
                         </StackPanel>
                     </Expander>
 
-                    <Expander Header="Всплывающие подсказки" IsExpanded="True" Margin="0,0,0,10">
-                        <StackPanel Margin="10">
-                            <Button Content="Наведи на меня" Width="200" HorizontalAlignment="Left" Margin="0,5"
-                            ToolTip="Это всплывающая подсказка!"/>
-                            <TextBlock Text="Текст с подсказкой" Margin="0,5"
-                               ToolTip="Подсказка для текста"/>
-                        </StackPanel>
-                    </Expander>
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
 
-        <TabItem Header="Контейнеры компоновки">
+        <TabItem Header="{Binding Containers_}">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Margin="10">
                     <GroupBox Header="StackPanel - элементы располагаются вертикально или горизонтально" Margin="0,0,0,10">
@@ -263,6 +245,108 @@
                             <Rectangle Fill="Green" Canvas.Left="150" Canvas.Top="30" Width="100" Height="50"/>
                             <Rectangle Fill="Blue" Canvas.Left="80" Canvas.Top="120" Width="100" Height="50"/>
                         </Canvas>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+        <TabItem Header="{Binding TabData}">
+            <StackPanel Margin="10">
+
+                <ToolBar Margin="0,0,0,10">
+                    <Button Content="Добавить"  Command="{Binding AddCommand}"    Style="{StaticResource SuccessButtonStyle}"/>
+                    <Button Content="Изменить" Command="{Binding EditCommand}"   Style="{StaticResource PrimaryButtonStyle}"/>
+                    <Button Content="Удалить"   Command="{Binding DeleteCommand}" Style="{StaticResource DangerButtonStyle}"/>
+                    <Separator/>
+                    <Button Content="Копировать" Command="{Binding CopyCommand}" Style="{StaticResource PrimaryButtonStyle}"/>
+                    <Button Content="Вставить"   Command="{Binding PasteCommand}" Style="{StaticResource PrimaryButtonStyle}"/>
+                </ToolBar>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox Grid.Column="0" Header="Исходная таблица" Margin="0,0,5,0"
+                              Style="{StaticResource StandardGroupBoxStyle}">
+                        <DataGrid Style="{StaticResource StandardDataGridStyle}" ItemsSource="{Binding SourceTable}" SelectedItem="{Binding SelectedSourceItem, Mode=TwoWay}"
+                                  AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <DataGridTextColumn Header="Значение" Width="*" Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+
+
+                    <GroupBox Grid.Column="2" Header="Целевая таблица (результат вставки)" Margin="5,0,0,0"
+                              Style="{StaticResource StandardGroupBoxStyle}">
+                        <DataGrid Style="{StaticResource StandardDataGridStyle}" ItemsSource="{Binding TargetTable}"
+                                  AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Значение" Width="*" Binding="{Binding Value}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                </Grid>
+
+            </StackPanel>
+        </TabItem>
+
+        <TabItem Header="{Binding TabBindings}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="Демонстрация режимов Binding Mode и UpdateSourceTrigger"
+                               FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="280"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="OneWay (только VM → View):" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding FontSize, Mode=OneWay, StringFormat='Размер шрифта: {0}'}"
+                                   VerticalAlignment="Center" Margin="5" FontSize="16"
+                                   Foreground="{StaticResource PrimaryColorBrush}"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="TwoWay + PropertyChanged:" VerticalAlignment="Center" Margin="5"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedTheme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource StandardTextBoxStyle}" Margin="5"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="TwoWay + LostFocus (по умолчанию):" VerticalAlignment="Center" Margin="5"/>
+                        <TextBox Grid.Row="2" Grid.Column="1"
+                                 Text="{Binding SelectedTheme, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                                 Style="{StaticResource StandardTextBoxStyle}" Margin="5"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="OneWayToSource (только View → VM):"
+                                   VerticalAlignment="Center" Margin="5"/>
+                        <TextBox Grid.Row="3" Grid.Column="1"
+                                 Text="{Binding SelectedTheme, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource StandardTextBoxStyle}" Margin="5"/>
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="OneTime (только при инициализации):"
+                                   VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding SelectedTheme, Mode=OneTime}"
+                                   VerticalAlignment="Center" Margin="5"
+                                   Foreground="{StaticResource DisabledColorBrush}"/>
+                    </Grid>
+
+                    <GroupBox Header="Результат привязки (SelectedTheme)" Margin="0,20,0,0"
+                              Style="{StaticResource StandardGroupBoxStyle}">
+                        <StackPanel>
+                            <TextBlock Text="Текущее значение свойства в ViewModel:" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTheme}" FontSize="20"
+                                       Foreground="{StaticResource SuccessColorBrush}" Margin="0,5,0,0"/>
+                        </StackPanel>
                     </GroupBox>
                 </StackPanel>
             </ScrollViewer>

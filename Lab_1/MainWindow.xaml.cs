@@ -19,6 +19,7 @@ namespace Lab_1
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new Library.MainViewModel();
         }
     }
 }

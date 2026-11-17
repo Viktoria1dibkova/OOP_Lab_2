@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Lab2.App.ViewModels
+namespace Library
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
