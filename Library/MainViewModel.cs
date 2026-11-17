@@ -190,5 +190,12 @@ namespace Library
             SourceTable.Add(new DataItem { Name = "Элемент 1", Value = "100" });
             SourceTable.Add(new DataItem { Name = "Элемент 2", Value = "250" });
         }
+
+        private string sourceOnlyText = string.Empty;
+        public string SourceOnlyText
+        {
+            get => sourceOnlyText;
+            set => SetProperty(ref sourceOnlyText, value);
+        }
     }
 }

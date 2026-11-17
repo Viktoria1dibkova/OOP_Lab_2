@@ -329,23 +329,23 @@
 
                         <TextBlock Grid.Row="3" Grid.Column="0" Text="OneWayToSource (только View → VM):"
                                    VerticalAlignment="Center" Margin="5"/>
-                        <TextBox Grid.Row="3" Grid.Column="1"
-                                 Text="{Binding SelectedTheme, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
-                                 Style="{StaticResource StandardTextBoxStyle}" Margin="5"/>
+                        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                            <TextBox Width="260"
+                             Text="{Binding SourceOnlyText, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource StandardTextBoxStyle}" Margin="5"/>
+                            <TextBlock Text="{Binding SourceOnlyText, StringFormat='→ дошло до VM: «{0}»'}" VerticalAlignment="Center" Margin="5" Foreground="{StaticResource InfoColorBrush}"/>
+                        </StackPanel>
+
 
                         <TextBlock Grid.Row="4" Grid.Column="0" Text="OneTime (только при инициализации):"
                                    VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding SelectedTheme, Mode=OneTime}"
-                                   VerticalAlignment="Center" Margin="5"
-                                   Foreground="{StaticResource DisabledColorBrush}"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedTheme, Mode=OneTime}" Style="{StaticResource StandardTextBoxStyle}" Margin="5"/>
                     </Grid>
 
                     <GroupBox Header="Результат привязки (SelectedTheme)" Margin="0,20,0,0"
                               Style="{StaticResource StandardGroupBoxStyle}">
                         <StackPanel>
                             <TextBlock Text="Текущее значение свойства в ViewModel:" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding SelectedTheme}" FontSize="20"
-                                       Foreground="{StaticResource SuccessColorBrush}" Margin="0,5,0,0"/>
+                            <TextBlock Text="{Binding SelectedTheme}" FontSize="20" Foreground="{StaticResource SuccessColorBrush}" Margin="0,5,0,0"/>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
