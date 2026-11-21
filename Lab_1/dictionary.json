@@ -1,0 +1,74 @@
+{
+    "ru": {
+        "Tab_Main": "Основное",
+        "Tab_Palette": "Цветовая палитра",
+        "Tab_Controls": "Элементы управления",
+        "Tab_Containers": "Контейнеры компоновки",
+        "Tab_Data": "Управление данными",
+        "Tab_Bindings": "Типы привязок",
+
+        "Group_Personalization": "Настройки персонализации",
+        "Group_Fonts": "Настройки шрифтов",
+        "Group_SourceTable": "Исходная таблица",
+        "Group_TargetTable": "Целевая таблица (результат вставки)",
+
+        "Label_Theme": "Тема оформления:",
+        "Label_Language": "Язык / Language / ??:",
+        "Label_FontType": "Тип шрифта:",
+        "Label_FontSize": "Размер шрифта:",
+
+        "Btn_Add": "Добавить",
+        "Btn_Edit": "Изменить",
+        "Btn_Delete": "Удалить",
+        "Btn_Copy": "Копировать",
+        "Btn_Paste": "Вставить"
+    },
+    "en": {
+        "Tab_Main": "Main",
+        "Tab_Palette": "Color Palette",
+        "Tab_Controls": "UI Controls",
+        "Tab_Containers": "Layout Containers",
+        "Tab_Data": "Data Management",
+        "Tab_Bindings": "Binding Types",
+
+        "Group_Personalization": "Personalization",
+        "Group_Fonts": "Font Settings",
+        "Group_SourceTable": "Source Table",
+        "Group_TargetTable": "Target Table (Paste Result)",
+
+        "Label_Theme": "Theme:",
+        "Label_Language": "Language:",
+        "Label_FontType": "Font Type:",
+        "Label_FontSize": "Font Size:",
+
+        "Btn_Add": "Add",
+        "Btn_Edit": "Edit",
+        "Btn_Delete": "Delete",
+        "Btn_Copy": "Copy",
+        "Btn_Paste": "Paste"
+    },
+    "ko": {
+        "Tab_Main": "??",
+        "Tab_Palette": "?? ???",
+        "Tab_Controls": "UI ??",
+        "Tab_Containers": "???? ????",
+        "Tab_Data": "??? ??",
+        "Tab_Bindings": "??? ??",
+
+        "Group_Personalization": "?? ??",
+        "Group_Fonts": "?? ??",
+        "Group_SourceTable": "?? ???",
+        "Group_TargetTable": "?? ???",
+
+        "Label_Theme": "??:",
+        "Label_Language": "??:",
+        "Label_FontType": "?? ??:",
+        "Label_FontSize": "?? ??:",
+
+        "Btn_Add": "??",
+        "Btn_Edit": "??",
+        "Btn_Delete": "??",
+        "Btn_Copy": "??",
+        "Btn_Paste": "????"
+    }
+}
