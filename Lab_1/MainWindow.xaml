@@ -253,12 +253,12 @@
             <StackPanel Margin="10">
 
                 <ToolBar Margin="0,0,0,10">
-                    <Button Content="{loc:Tr Btn_Add}"  Command="{Binding AddCommand}"    Style="{StaticResource SuccessButtonStyle}"/>
-                    <Button Content="{loc:Tr Btn_Edit}" Command="{Binding EditCommand}"   Style="{StaticResource PrimaryButtonStyle}"/>
-                    <Button Content="{loc:Tr Btn_Delete}"   Command="{Binding DeleteCommand}" Style="{StaticResource DangerButtonStyle}"/>
+                    <Button Command="ApplicationCommands.New" CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Content="{loc:Tr Btn_Add}" Style="{StaticResource SuccessButtonStyle}"/>
+                    <Button Command="ApplicationCommands.Properties" CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Content="{loc:Tr Btn_Edit}"   Style="{StaticResource PrimaryButtonStyle}"/>
+                    <Button Command="ApplicationCommands.Delete" CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Content="{loc:Tr Btn_Delete}" Style="{StaticResource DangerButtonStyle}"/>
                     <Separator/>
-                    <Button Content="{loc:Tr Btn_Copy}" Command="{Binding CopyCommand}" Style="{StaticResource PrimaryButtonStyle}"/>
-                    <Button Content="{loc:Tr Btn_Paste}"   Command="{Binding PasteCommand}" Style="{StaticResource PrimaryButtonStyle}"/>
+                    <Button Command="ApplicationCommands.Copy" CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Content="{loc:Tr Btn_Copy}"   Style="{StaticResource PrimaryButtonStyle}"/>
+                    <Button Command="ApplicationCommands.Paste" CommandTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Content="{loc:Tr Btn_Paste}"  Style="{StaticResource PrimaryButtonStyle}"/>
                 </ToolBar>
 
                 <Grid>
@@ -269,7 +269,7 @@
 
                     <GroupBox Grid.Column="0" Header="{loc:Tr Group_SourceTable}" Margin="0,0,5,0"
                               Style="{StaticResource StandardGroupBoxStyle}">
-                        <DataGrid Style="{StaticResource StandardDataGridStyle}" ItemsSource="{Binding SourceTable}" SelectedItem="{Binding SelectedSourceItem, Mode=TwoWay}"
+                        <DataGrid x:Name="SourceGrid" Style="{StaticResource StandardDataGridStyle}" ItemsSource="{Binding SourceTable}" SelectedItem="{Binding SelectedSourceItem, Mode=TwoWay}"
                                   AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="{loc:Tr Col_Name}" Width="*" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -281,7 +281,7 @@
 
                     <GroupBox Grid.Column="2" Header="{loc:Tr Group_TargetTable}" Margin="5,0,0,0"
                               Style="{StaticResource StandardGroupBoxStyle}">
-                        <DataGrid Style="{StaticResource StandardDataGridStyle}" ItemsSource="{Binding TargetTable}"
+                        <DataGrid  x:Name="TargetGrid" Style="{StaticResource StandardDataGridStyle}" ItemsSource="{Binding TargetTable}"
                                   AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="{loc:Tr Col_Name}" Width="*" Binding="{Binding Name}"/>

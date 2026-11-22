@@ -1,5 +1,6 @@
 ﻿using CodingSeb.Localization;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -87,6 +88,9 @@ namespace Library
         public ICommand CopyCommand { get; }
         public ICommand PasteCommand { get; }
 
+        private List<DataItem> copiedItems = new();
+
+        public IList SelectedItems { get; set; } = new List<DataItem>();
         public MainViewModel()
         {
             LoadColors();
@@ -96,15 +100,17 @@ namespace Library
             DeleteCommand = new RelayCommand(_ => SourceTable.Remove(SelectedSourceItem), _ => SelectedSourceItem != null);
             EditCommand = new RelayCommand(_ => MessageBox.Show("Редактирование: " + SelectedSourceItem.Name), _ => SelectedSourceItem != null);
 
+
             CopyCommand = new RelayCommand(_ =>
             {
-                if (SelectedSourceItem != null) copiedItem = new DataItem { Name = SelectedSourceItem.Name, Value = SelectedSourceItem.Value };
-            }, _ => SelectedSourceItem != null);
+                copiedItems = SelectedItems.Cast<DataItem>().ToList();
+            }, _ => SelectedItems.Count > 0);
 
             PasteCommand = new RelayCommand(_ =>
             {
-                if (copiedItem != null) TargetTable.Add(new DataItem { Name = copiedItem.Name + " (Копия)", Value = copiedItem.Value });
-            }, _ => copiedItem != null);
+                foreach (var item in copiedItems)  
+                    TargetTable.Add(new DataItem { Name = item.Name, Value = item.Value });
+            }, _ => copiedItems.Count > 0);
         }
 
         private void LoadColors()
