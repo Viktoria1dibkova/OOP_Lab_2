@@ -17,7 +17,7 @@ namespace Library
         private int fontSize = 14;
         public int FontSize { get => fontSize; set => SetProperty(ref fontSize, value); }
 
-        private string selectedTheme = "Светлая тема";
+        private string selectedTheme = "Light";
         public string SelectedTheme
         {
             get => selectedTheme;
@@ -44,6 +44,7 @@ namespace Library
                         "한국어" => "ko",
                         _ => "ru"
                     };
+                    OnPropertyChanged(nameof(SelectedTheme));
                 }
             }
         }
@@ -61,11 +62,8 @@ namespace Library
 
         public FontFamily CurrentFontFamily => new FontFamily(SelectedFont);
 
-        public SolidColorBrush WindowBackground => SelectedTheme == "Темная тема"
+        public SolidColorBrush WindowBackground => SelectedTheme == "Dark"
             ? Brushes.DarkGray : Brushes.White;
-
-        public SolidColorBrush WindowForeground => SelectedTheme == "Темная тема"
-            ? Brushes.White : Brushes.DarkGray;
 
         
         public ObservableCollection<ColorItem> BurgundyColors { get; } = new ObservableCollection<ColorItem>();
